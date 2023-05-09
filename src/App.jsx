@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import "./App.css"
+import Cripto from './Cripto'
 
 function App() {
 
@@ -25,13 +26,20 @@ function App() {
 
   return (
     <>
+    <div className="app-container">
        <h1>Lista de criptomonedas</h1>
-       <ol>
-        { criptos.map(({id, name, priceUsd}) => (
-            <li key={id}>Nombre: {name} Precio: {priceUsd}</li>
+       <div className="cripto-container">
+        { criptos.map(({id, name, priceUsd, symbol, changePercent24Hr}) => (
+            <Cripto 
+            key={id} 
+            name={name} 
+            priceUSd={priceUsd} 
+            symbol={symbol} 
+            changePercent24Hr={changePercent24Hr} />
         ) ) 
         }
-       </ol>
+       </div>
+    </div>
 
     </>
   )
