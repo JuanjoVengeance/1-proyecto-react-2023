@@ -1,11 +1,12 @@
+import { NavLink } from "react-router-dom"
 import "./Menu.css"
 
 const Menu = () =>{
     return (
         <nav className="main-menu">
             <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/saludo">Saludo</a></li>
+                <li><NavLink to="/">Inicio</NavLink></li>
+                <li><NavLink to="/saludo">Saludo</NavLink></li>
                 <li></li>
             </ul>
         </nav>
