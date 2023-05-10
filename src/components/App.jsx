@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import "./App.css"
-import Cripto from './Cripto'
+import Cripto from './Cripto/Cripto'
+// import Menu from './Menu/Menu'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
   return (
     <>
     <div className="app-container">
+      {/* <Menu /> */}
        <h1>Lista de criptomonedas</h1>
        <div className="cripto-container">
         { criptos.map(({id, name, priceUsd, symbol, changePercent24Hr}) => (
