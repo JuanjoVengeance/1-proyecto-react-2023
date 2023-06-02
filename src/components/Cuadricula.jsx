@@ -1,32 +1,33 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
 import "./Cuadricula.css"
 import Cripto from './Cripto/Cripto'
+import usePetition from '../hooks/usePetition'
 // import Menu from './Menu/Menu'
 
 function Cuadricula() {
 
-  const API_URL = import.meta.env.VITE_API_URL
+  // const API_URL = import.meta.env.VITE_API_URL
 
-  const [criptos, setCriptos] = useState()
+  // const [criptos, setCriptos] = useState()
   
-  useEffect( () => {
-      axios.get(`${API_URL}assets`)
-      // fetch("https://api.coincap.io/v2/assets")
-      // .then((resp) => resp.json())
-      .then((data) => {
-        // console.log(data)
-        setCriptos(data.data.data)
-      })
-      .catch(() => {
-        console.error("La petición falló")
-      })
-       }, [])
+  // useEffect( () => {
+  //     axios.get(`${API_URL}assets`)
+  //     // fetch("https://api.coincap.io/v2/assets")
+  //     // .then((resp) => resp.json())
+  //     .then((data) => {
+  //       // console.log(data)
+  //       setCriptos(data.data.data)
+  //     })
+  //     .catch(() => {
+  //       console.error("La petición falló")
+  //     })
+  //      }, [])
 
-  if(!criptos) return <span>Cargando...</span>
+  const [criptos] = usePetition("assets")
+
+  if (!criptos) return <span>Cargando...</span>
 
   return (
-    <>
+    
     <div className="app-container">
       {/* <Menu /> */}
        <h1>Lista de criptomonedas</h1>
@@ -37,13 +38,15 @@ function Cuadricula() {
             name={name} 
             priceUSd={priceUsd} 
             symbol={symbol} 
-            changePercent24Hr={changePercent24Hr} />
+            changePercent24Hr={changePercent24Hr}
+            id={id}
+             />
+            
         ) ) 
         }
        </div>
     </div>
 
-    </>
   )
 }
 
